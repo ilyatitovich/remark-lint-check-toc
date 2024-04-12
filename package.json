@@ -1,0 +1,79 @@
+{
+  "name": "remark-lint-check-toc",
+  "version": "1.0.0",
+  "description": "Ensure that your Markdown TOC is correct",
+  "keywords": [
+    "remark",
+    "remark-plugin",
+    "lint",
+    "markdown",
+    "remark-lint"
+  ],
+  "author": "Ilya Titov",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilyatitovich/remark-lint-check-toc.git"
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": "^18.0.0 || >=20.0.0"
+  },
+  "type": "module",
+  "scripts": {
+    "test": "pnpm run /^test:/",
+    "test:lint": "eslint .",
+    "test:coverage": "c8 pnpm bnt",
+    "test:size": "size-limit",
+    "test:plugin": "node ./test/test.js"
+  },
+  "devDependencies": {
+    "@logux/eslint-config": "^53.0.0",
+    "@size-limit/preset-small-lib": "^11.0.2",
+    "better-node-test": "^0.5.0",
+    "c8": "^9.1.0",
+    "clean-publish": "^4.3.0",
+    "eslint": "^8.57.0",
+    "remark": "^15.0.1",
+    "size-limit": "^11.0.2"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json"
+  },
+  "c8": {
+    "exclude": [
+      "**/*.test.*",
+      "test/*"
+    ],
+    "lines": 100,
+    "check-coverage": true,
+    "reporter": [
+      "text",
+      "lcov"
+    ],
+    "skip-full": true,
+    "clean": true
+  },
+  "size-limit": [
+    {
+      "import": "{ }",
+      "limit": "0 B"
+    }
+  ],
+  "prettier": {
+    "arrowParens": "avoid",
+    "jsxSingleQuote": false,
+    "quoteProps": "consistent",
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none"
+  },
+  "clean-publish": {
+    "cleanDocs": true
+  },
+  "dependencies": {
+    "unified-lint-rule": "^2.1.2",
+    "unist-util-visit": "^5.0.0"
+  }
+}
