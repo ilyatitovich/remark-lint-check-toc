@@ -3,10 +3,10 @@
 ***
 
 * [Heading One](#heading-one)
-* [Heading Two](#heading-two)
-  * [Sub Heding One](#sub-heading-one)
-  * [Sub Heading Three](#subheading-three)
-* [Heading Three](#heading)
+* [Heaing Two](#heading-two)
+  * [Sub Heading One](#sub-heading-one)
+  * [Sub Heading Three](#sub-heading-three)
+* [Heading Three](#heading-three)
 
 ## Heading One
 
@@ -28,7 +28,7 @@ Lorem ipsum dolor sit amet.
 
 Lorem ipsum dolor sit amet.
 
-### Some List
+## Heading Four
 
 * Item 1
 * Item 2

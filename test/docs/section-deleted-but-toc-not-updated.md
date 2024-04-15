@@ -6,7 +6,7 @@
 * [Heading Two](#heading-two)
   * [Sub Heading One](#sub-heading-one)
   * [Sub Heading Three](#sub-heading-three)
-* [Heading Three](#heading-three)
+* [Heading Three](#heading-three) 
 * [Heading Four](#heading-four)
 
 ## Heading One
@@ -22,10 +22,6 @@ Lorem ipsum dolor sit amet.
 Lorem ipsum dolor sit amet.
 
 ### Sub Heading Three
-
-Lorem ipsum dolor sit amet.
-
-## Heading Three
 
 Lorem ipsum dolor sit amet.
 

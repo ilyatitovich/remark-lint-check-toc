@@ -5,12 +5,21 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  github-slugger:
+    specifier: ^2.0.0
+    version: 2.0.0
   unified-lint-rule:
     specifier: ^2.1.2
     version: 2.1.2
+  unist-util-find:
+    specifier: ^3.0.0
+    version: 3.0.0
   unist-util-visit:
     specifier: ^5.0.0
     version: 5.0.0
+  unist-util-visit-parents:
+    specifier: ^6.0.1
+    version: 6.0.1
 
 devDependencies:
   '@logux/eslint-config':
@@ -1632,6 +1641,10 @@ packages:
       resolve-pkg-maps: 1.0.0
     dev: true
 
+  /github-slugger@2.0.0:
+    resolution: {integrity: sha512-IaOQ9puYtjrkq7Y0Ygl9KDZnrf/aiUJYUpVf89y8kyaxbRG7Y1SrX/jaumrv81vc61+kiMempujsM3Yw7w5qcw==}
+    dev: false
+
   /glob-parent@5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
     engines: {node: '>= 6'}
@@ -2025,6 +2038,10 @@ packages:
     dependencies:
       p-locate: 5.0.0
     dev: true
+
+  /lodash.iteratee@4.7.0:
+    resolution: {integrity: sha512-yv3cSQZmfpbIKo4Yo45B1taEvxjNvcpF1CEOc0Y6dEyvhPIfEJE3twDwPgWTPQubcSgXyBwBKG6wpQvWMDOf6Q==}
+    dev: false
 
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
@@ -2917,6 +2934,14 @@ packages:
       trough: 2.2.0
       vfile: 6.0.1
     dev: true
+
+  /unist-util-find@3.0.0:
+    resolution: {integrity: sha512-T7ZqS7immLjYyC4FCp2hDo3ksZ1v+qcbb+e5+iWxc2jONgHOLXPCpms1L8VV4hVxCXgWTxmBHDztuEZFVwC+Gg==}
+    dependencies:
+      '@types/unist': 3.0.2
+      lodash.iteratee: 4.7.0
+      unist-util-visit: 5.0.0
+    dev: false
 
   /unist-util-is@6.0.0:
     resolution: {integrity: sha512-2qCTHimwdxLfz+YzdGfkqNlH0tLi9xjTnHddPmJwtIG9MGsdbutfTc4P+haPD7l7Cjxf/WZj+we5qfVPvvxfYw==}

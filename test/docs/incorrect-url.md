@@ -3,11 +3,11 @@
 ***
 
 * [Heading One](#heading-one)
-* [Heading Two](#heading-two)
+* [Heading Two](#eading-two)
   * [Sub Heading One](#sub-heading-one)
   * [Sub Heading Three](#sub-heading-three)
-* [Heading Three](#heading-three)
-* [Heading Four](#heading-four)
+* [Heading Three](#headingthree)
+* [Heading Four](#heaing-four)
 
 ## Heading One
 

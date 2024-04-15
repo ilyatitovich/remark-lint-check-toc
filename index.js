@@ -1,72 +1,90 @@
-/*
-
-1. Find TOC:
-- Look for list items (listItem) that contain links (link) with URLs pointing to headings within the document (usually identified by URLs starting with #).
-
-2. Collect all headings from document.
-
-3. Find TOC elemets and compare them with the existing titles.
-
-*/
-
 import { lintRule } from 'unified-lint-rule'
-import { visit } from 'unist-util-visit'
+import findTOC from './lib/findTOC.js'
+import createListOfSections from './lib/createListOfSections.js'
+import getTOCSections from './lib/getTOCSections.js'
 
-function checkToc(tree, file) {
-  // Find out if the document contains a TOC
-  let tocIsExist = false
-  visit(tree, 'listItem', node => {
-    if (node.children[0].type === 'paragraph') {
-      // Try to extract URL
-      const { url } = node.children[0].children[0]
+function checkTOC(tree, file) {
+  const toc = findTOC(tree)
 
-      // If so - check is it TOC URL or not
-      if (url && url.startsWith('#')) {
-        tocIsExist = true
-        return
-      }
-    }
-  })
-
-  // If the TOC is not detected, no further calculations are performed
-  if (!tocIsExist) {
+  // If TOC not detected - stop plugin
+  if (!toc) {
     file.data.customInfo = {
-      message: 'No TOC detected. Stopping the plugin.'
+      message: 'No TOC detected'
     }
 
-    return
+    return false
   }
 
-  // Collect all headings and add right URLs
-  const headings = {}
+  // Create a list of sections from documents that represent TOC
+  const docSections = createListOfSections(tree)
+  const docSectionsLength = docSections.length
 
-  visit(tree, 'heading', node => {
-    const heading = node.children[0].value
-    headings[heading] = {
-      url:
-        '#' +
-        heading
-          .toLowerCase()
-          .replace(/\s+/g, '-')
-          .replace(/[^\w-]+/g, '')
+  // Collect TOC headings in object for quick checking
+  const tocSections = getTOCSections(toc)
+
+  // Check if forgot to update TOC when sections was deleted
+  if (tocSections.list.length > docSectionsLength) {
+    file.message(
+      `TOС contains more sections than document`,
+      toc // TOC position
+    )
+  }
+
+  // Check correspondence of document sections to the existing TOC
+  for (let i = 0; i < docSectionsLength; i++) {
+    const { title, url, depth } = docSections[i]
+
+    // Check that the document section is included in the table of contents.
+    if (!tocSections[title]) {
+      file.message(
+        `Section: '${title}' was not found in TOС`,
+        toc // TOC position
+      )
+
+      continue // If not - check next section
     }
-  })
 
-  // Find TOC elemets and compare them with the existing titles
-  visit(tree, 'link', node => {
-    if (node.url.startsWith('#')) {
-      const tocTitle = node.children[0].value
+    // Check that URl is correct
+    if (url !== tocSections[title].url) {
+      file.message(
+        `Incorrect URL in TOС: '${tocSections[title].url}'`,
+        tocSections[title].position // position node with url in TOC
+      )
+    }
 
-      if (!headings[tocTitle] || node.url !== headings[tocTitle].url) {
+    // Check the order of sections in TOС
+    if (title !== tocSections.list[i]) {
+      // Find index of the section in existing TOC
+      const sectionIndex = tocSections.list.indexOf(title)
+
+      if (i === 0) {
         file.message(
-          `Incorrect title or URL in TOC. Title: ${tocTitle}, URL: ${node.url}`,
-          node
+          `Incorrect order in TOC: '${title}' must be first element`,
+          tocSections[title].position
+        )
+      } // Check that the sections are in the same order as in the document
+      else if (
+        docSections[i - 1].title !== tocSections.list[sectionIndex - 1]
+      ) {
+        file.message(
+          `Incorrect order in TOC: '${title}' must be after '${
+            docSections[i - 1].title
+          }'`,
+          tocSections[title].position
         )
       }
     }
-  })
+
+    // Check the section hierarchy according to the heading levels in the document
+    if (depth !== tocSections[title].depth) {
+      file.message(
+        `Incorrect section hierarchy in TOC: '${title}' `,
+        tocSections[title].position // position node with url in TOC
+      )
+    }
+  }
 }
 
-const remarkLintCheckToc = lintRule('remark-lint:check-toc', checkToc)
+const remarkLintCheckTOC = lintRule('remark-lint:check-toc', checkTOC)
 
-export default remarkLintCheckToc
+export default remarkLintCheckTOC
