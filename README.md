@@ -2,7 +2,19 @@
 
 [remark-lint](https://github.com/remarkjs/remark-lint) plugin to ensure that your Markdown headings capitalization is correct.
 
-The plugin finds the TOC and checks titles and URLs against existing titles in the document.
+**The plugin checks:**
+
+- The ratio of the number of sections in the document and the TOC (to ensure consistency when sections are added or removed).
+- The presence of a section in the TOC (to detect when a section is missing or incorrectly listed).
+- Correctness of URLs (ensuring they are generated correctly using a slugger for GitHub).
+- The order of sections in the TOC compared to the document.
+- Ensuring that the sections in the TOC maintain the correct hierarchy based on the headings in the document.
+
+## Install
+
+```sh
+npm install remark-lint-check-toc
+```
 
 ## Usage
 
