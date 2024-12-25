@@ -70,3 +70,9 @@ Lorem ipsum dolor sit amet.
 
 3:3-3:30 warning Incorrect title or URL in TOC. Title: heading Two, URL: #heading-two check-toc remark-lint
 ```
+
+## Support the Project
+
+If you find this tool helpful, consider supporting us:
+
+- [**Support Our Work**](https://ilyatitov.vercel.app/payments)
