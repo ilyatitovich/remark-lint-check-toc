@@ -1,6 +1,6 @@
 # remark-lint-check-toc
 
-[remark-lint](https://github.com/remarkjs/remark-lint) plugin to ensure that your Markdown headings capitalization is correct.
+[remark-lint](https://github.com/remarkjs/remark-lint) plugin to ensure that your Markdown TOC is correct.
 
 **The plugin checks:**
 
