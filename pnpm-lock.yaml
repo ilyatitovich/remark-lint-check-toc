@@ -183,8 +183,8 @@ importers:
         version: 6.1.0
     devDependencies:
       better-node-test:
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^2.0.0
+        version: 2.0.0
       c8:
         specifier: ^12.0.0
         version: 12.0.0
@@ -335,8 +335,8 @@ packages:
     resolution: {integrity: sha512-BLrgEcRTwX2o6gGxGOCNyMvGSp35YofuYzw9h1IMTRmKqttAZZVU67bdb9Pr2vUHA8+j3i2tJfjO6C6+4myGTA==}
     engines: {node: 18 || 20 || >=22}
 
-  better-node-test@1.0.0:
-    resolution: {integrity: sha512-15Dz6VMm0sH5zwxKmOxEwrrOttcQ/z2bhAAAQOujScYxQqO3rlU3rtE1/Vfkcu7rpwaqZ0iqmrwE26G4hwDlVg==}
+  better-node-test@2.0.0:
+    resolution: {integrity: sha512-UxHG5+cOkaGV4gvhgPw0Nm3GY3drfRoyuio17X6vM5hDrTERCRCJsNoxIH81DR0RUA27NPyZYj7XI9jK+UqHxA==}
     engines: {node: ^22.0.0 || ^24.0.0 || >=26.0.0}
     hasBin: true
 
@@ -980,7 +980,7 @@ snapshots:
 
   balanced-match@4.0.4: {}
 
-  better-node-test@1.0.0: {}
+  better-node-test@2.0.0: {}
 
   brace-expansion@5.0.12:
     dependencies:
